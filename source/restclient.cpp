@@ -54,6 +54,8 @@ RestClient::response RestClient::get(const std::string& url)
     curl_easy_setopt(curl, CURLOPT_USERAGENT, RestClient::user_agent);
     /** set query URL */
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    /** set this option for thred safety */
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
     /** set callback function */
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, RestClient::write_callback);
     /** set data object to pass to callback function */
@@ -113,6 +115,8 @@ RestClient::response RestClient::post(const std::string& url,
     curl_easy_setopt(curl, CURLOPT_USERAGENT, RestClient::user_agent);
     /** set query URL */
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    /** set this option for thred safety */
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
     /** Now specify we want to POST data */
     curl_easy_setopt(curl, CURLOPT_POST, 1L);
     /** set post fields */
@@ -186,6 +190,8 @@ RestClient::response RestClient::put(const std::string& url,
     curl_easy_setopt(curl, CURLOPT_USERAGENT, RestClient::user_agent);
     /** set query URL */
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    /** set this option for thred safety */
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
     /** Now specify we want to PUT data */
     curl_easy_setopt(curl, CURLOPT_PUT, 1L);
     curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
@@ -257,6 +263,8 @@ RestClient::response RestClient::del(const std::string& url)
     curl_easy_setopt(curl, CURLOPT_USERAGENT, RestClient::user_agent);
     /** set query URL */
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    /** set this option for thred safety */
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
     /** set HTTP DELETE METHOD */
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, http_delete);
     /** set callback function */
